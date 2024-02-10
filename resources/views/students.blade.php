@@ -14,7 +14,7 @@
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Group</th>
-                <th>Some</th>
+                <th>Link</th>
             </tr>
             </thead>
             <tbody>
@@ -24,7 +24,11 @@
                     <td>{{ $student->last_name }}</td>
                     @php($group = $student->group->name ?? '-')
                     <td>{{ $group }}</td>
-                    <td></td>
+                    <td>
+                        <a href="/student/{{ $student->id }}">
+                            Personal link
+                        </a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

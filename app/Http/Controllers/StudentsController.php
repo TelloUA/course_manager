@@ -13,4 +13,10 @@ class StudentsController extends Controller
         $students = Student::all();
         return view('students', ['students' => $students]);
     }
+
+    public function one(Request $request): View
+    {
+        $student = Student::find($request->id);
+        return view('student', ['student' => $student]);
+    }
 }

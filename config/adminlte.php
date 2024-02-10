@@ -320,8 +320,8 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Students',
+            'url'  => 'students',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
