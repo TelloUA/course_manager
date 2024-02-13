@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('/students', [StudentsController::class, 'list']);
 Route::get('/student/{id}', [StudentsController::class, 'one']);
+Route::get('/student-add', [StudentsController::class, 'add']);
+Route::post('/student-save', [StudentsController::class, 'save']);

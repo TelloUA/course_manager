@@ -7,6 +7,12 @@
 @stop
 
 @section('content')
+    <div style="width: fit-content">
+        <a href="/student-add">
+            <button type="button" class="btn btn-block btn-primary">Add student</button>
+        </a>
+    </div>
+
     <div class="card-body table-responsive p-0" style="height: 800px;">
         <table class="table table-head-fixed text-nowrap">
             <thead>
