@@ -325,9 +325,9 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Groups',
+            'url'  => 'groups',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text'    => 'multilevel',

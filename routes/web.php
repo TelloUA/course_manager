@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::get('/student/{id}', [StudentsController::class, 'one'])->name('student')
 Route::get('/student-add', [StudentsController::class, 'add'])->name('studentAdd');
 Route::post('/student-save', [StudentsController::class, 'save'])->name('studentSave');
 Route::delete('/student/{id}', [StudentsController::class, 'delete'])->name('studentDelete');
+
+Route::get('/groups', [GroupController::class, 'list'])->name('groups');
+Route::get('/group/{id}', [GroupController::class, 'one'])->name('group');
