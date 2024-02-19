@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students', [StudentsController::class, 'list']);
-Route::get('/student/{id}', [StudentsController::class, 'one']);
-Route::get('/student-add', [StudentsController::class, 'add']);
-Route::post('/student-save', [StudentsController::class, 'save']);
+Route::get('/students', [StudentsController::class, 'list'])->name('students');
+Route::get('/student/{id}', [StudentsController::class, 'one'])->name('student');
+Route::get('/student-add', [StudentsController::class, 'add'])->name('studentAdd');
+Route::post('/student-save', [StudentsController::class, 'save'])->name('studentSave');
+Route::delete('/student/{id}', [StudentsController::class, 'delete'])->name('studentDelete');

@@ -6,6 +6,7 @@ use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class StudentsController extends Controller
@@ -44,5 +45,17 @@ class StudentsController extends Controller
         $student->save();
 
         return redirect('/students');
+    }
+
+    public function delete(Request $request): RedirectResponse
+    {
+        $student = Student::findOrFail($request->id);
+        $name = $student->first_name . ' ' . $student->last_name;
+        $student->courses()->detach();
+        $student->delete();
+
+        Session::flash('success', "Student $name deleted successfully.");
+
+        return redirect()->route('students');
     }
 }
