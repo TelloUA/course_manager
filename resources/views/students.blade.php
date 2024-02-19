@@ -24,6 +24,20 @@
             {{ Session::get('success') }}
         </div>
     @endif
+
+    <form action="{{ route('students') }}" method="GET">
+        <div class="form-group">
+            <label for="groupFilter">Filter by Group:</label>
+            <select name="group_id" id="groupFilter" class="form-control col-md-4">
+                <option value="">All</option>
+                @foreach($groups as $group)
+                    <option value="{{ $group->id }}" {{ $selectedGroup == $group->id ? 'selected' : '' }}>{{ $group->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </form>
+
     <div style="width: fit-content">
         <a href="/student-add">
             <button type="button" class="btn btn-block btn-primary">Add student</button>
@@ -32,6 +46,7 @@
 
     <div class="card-body table-responsive p-0" style="height: 800px;">
         <table class="table table-head-fixed text-nowrap">
+            {{ $students->links('vendor/pagination/default') }}
             <thead>
             <tr>
                 <th>First name</th>

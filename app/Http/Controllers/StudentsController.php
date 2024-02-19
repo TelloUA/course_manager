@@ -11,10 +11,26 @@ use Illuminate\View\View;
 
 class StudentsController extends Controller
 {
-    public function list(): View
+    public function list(Request $request): View
     {
-        $students = Student::all();
-        return view('students', ['students' => $students]);
+        $groups = Group::all();
+        $selectedGroup = $request->input('group_id');
+
+        $query = Student::query();
+
+        if ($selectedGroup) {
+            $query->whereHas('group', function ($query) use ($selectedGroup) {
+                $query->where('id', $selectedGroup);
+            });
+        }
+
+        $students = $query->paginate(20);
+
+        return view('students', [
+            'students' => $students,
+            'groups' => $groups,
+            'selectedGroup' => $selectedGroup,
+        ]);
     }
 
     public function one(Request $request): View
