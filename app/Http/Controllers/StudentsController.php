@@ -66,7 +66,7 @@ class StudentsController extends Controller
     public function delete(Request $request): RedirectResponse
     {
         $student = Student::findOrFail($request->id);
-        $name = $student->first_name . ' ' . $student->last_name;
+        $name = $student->getFullName();
         $student->courses()->detach();
         $student->delete();
 

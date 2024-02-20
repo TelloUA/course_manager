@@ -25,15 +25,15 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputEmail">First name</label>
+                        <label for="firstName">First name</label>
                         <input type="text" class="form-control" name="firstName" placeholder="Enter first name">
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail">Last name</label>
-                        <input type="text" class="form-control" name="lastName" placeholder="Enter last name">
+                        <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" name="lastName" placeholder="Enter last name">
                     </div>
                     <div class="form-group">
-                        <label for="inputGroup">Group</label>
+                        <label for="groupId">Group</label>
                         <select class="form-control" name="groupId">
                             <option></option>
                             @foreach($groups as $group)

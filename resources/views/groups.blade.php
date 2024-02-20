@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ $group->name }}</td>
                     <td>{{ $group->students()->count() }}</td>
-                    <td>Details</td>
+                    <td><a href="{{ route('group',$group->id ) }}">Details</a></td>
                 </tr>
             @endforeach
             </tbody>

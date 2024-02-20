@@ -27,3 +27,5 @@ Route::delete('/student/{id}', [StudentsController::class, 'delete'])->name('stu
 
 Route::get('/groups', [GroupController::class, 'list'])->name('groups');
 Route::get('/group/{id}', [GroupController::class, 'one'])->name('group');
+Route::post('/group/{id}/add-student', [GroupController::class, 'addStudent'])->name('groupAddStudent');
+Route::delete('/group/{id}/remove-student', [GroupController::class, 'removeStudent'])->name('groupRemoveStudent');
