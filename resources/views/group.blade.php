@@ -78,7 +78,9 @@
                     <ul class="nav flex-column">
                         @foreach($group->students()->orderBy('first_name')->get() as $student)
                             <li class="nav-item d-flex align-items-center justify-content-between">
-                                <span class="nav-link">{{ $student->getFullName() }}</span>
+                                <span class="nav-link">
+                                    <a href="{{ route('student', $student->id) }}">{{ $student->getFullName() }}</a>
+                                </span>
                                 <form id="deleteForm_{{ $student->id }}"
                                       action="{{ route('groupRemoveStudent', $group->id) }}"
                                       method="POST">

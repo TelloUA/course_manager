@@ -27,17 +27,19 @@
             <div class="card-footer p-0">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            @php
-                                $group = $student->group;
-                                if (is_null($group)) {
-                                    $groupName = 'Out of group';
-                                    $groupStudents = 0;
-                                } else {
-                                    $groupName = 'Group ' . $group->name;
-                                    $groupStudents = $group->students->count();
-                                }
-                            @endphp
+                        @php
+                            $group = $student->group;
+                            if (is_null($group)) {
+                                $groupName = 'Out of group';
+                                $groupStudents = 0;
+                                $link = '';
+                            } else {
+                                $groupName = 'Group ' . $group->name;
+                                $groupStudents = $group->students->count();
+                                $link = route('group', $group->id);
+                            }
+                        @endphp
+                        <a href="{{ $link }}" class="nav-link">
                             {{ $groupName }} <span class="float-right badge bg-primary">{{ $groupStudents }}</span>
                         </a>
                     </li>

@@ -24,7 +24,6 @@
             {{ Session::get('success') }}
         </div>
     @endif
-
     <form action="{{ route('students') }}" method="GET">
         <div class="form-group">
             <label for="groupFilter">Filter by Group:</label>
@@ -43,10 +42,10 @@
             <button type="button" class="btn btn-block btn-primary">Add student</button>
         </a>
     </div>
+    {{ $students->links('vendor/pagination/default') }}
 
     <div class="card-body table-responsive p-0" style="height: 800px;">
         <table class="table table-head-fixed text-nowrap">
-            {{ $students->links('vendor/pagination/default') }}
             <thead>
             <tr>
                 <th>First name</th>
