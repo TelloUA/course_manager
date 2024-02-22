@@ -15,14 +15,8 @@
         <div class="col-md-4">
             <div class="card card-widget widget-user-2">
                 <div class="widget-user-header bg-warning">
-
-                    <div class="widget-user-image">
-                        <img class="" alt="User Avatar">
-                    </div>
-
-                    <h3 class="widget-user-username">{{ $student->first_name . ' ' . $student->last_name }}</h3>
-                    <h5 class="widget-user-desc">Student</h5>
-
+                    <h3 class="widget-user-username" style="margin-left: 0">{{ $student->first_name . ' ' . $student->last_name }}</h3>
+                    <h5 class="widget-user-desc" style="margin-left: 0">Student</h5>
                 </div>
             <div class="card-footer p-0">
                 <ul class="nav flex-column">
@@ -44,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('courses') }}" class="nav-link">
                             Courses <span class="float-right badge bg-info">{{ count($student->courses) }}</span>
                         </a>
                     </li>
