@@ -24,7 +24,9 @@ class GroupFactory extends Factory
 
     protected static function newGroupName(): string
     {
-        $string = strtoupper(Str::random(2));
+        do {
+            $string = strtoupper(Str::random(2));
+        } while (!preg_match('/[A-Z]{2}/', $string));
         $number = rand(10, 99);
         return  $string . '-' . $number;
     }
