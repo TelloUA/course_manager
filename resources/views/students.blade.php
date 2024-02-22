@@ -33,16 +33,18 @@
                     <option value="{{ $group->id }}" {{ $selectedGroup == $group->id ? 'selected' : '' }}>{{ $group->name }}</option>
                 @endforeach
             </select>
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Filter</button>
         </div>
     </form>
 
-    <div style="width: fit-content">
-        <a href="/student-add">
-            <button type="button" class="btn btn-block btn-primary">Add student</button>
-        </a>
+    <div class="d-flex align-items-center justify-content-between" style="margin-bottom: 0.5rem">
+        <div style="width: fit-content">
+            <a href="/student-add">
+                <button type="button" class="btn btn-block btn-primary">Add student</button>
+            </a>
+        </div>
+        {{ $students->links('vendor/pagination/default') }}
     </div>
-    {{ $students->links('vendor/pagination/default') }}
 
     <div class="card-body table-responsive p-0" style="height: 800px;">
         <table class="table table-head-fixed text-nowrap">

@@ -311,14 +311,14 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+/*        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        ],*/
+        ['header' => 'course_manager'],
         [
             'text' => 'Students',
             'url'  => 'students',
@@ -334,7 +334,7 @@ return [
             'url'  => 'courses',
             'icon' => 'fas fa-fw fa-book',
         ],
-        [
+/*        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -387,7 +387,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
