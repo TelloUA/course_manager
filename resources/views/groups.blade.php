@@ -20,7 +20,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Students count</th>
+                    <th>Number of students</th>
                     <th>Details</th>
                 </tr>
             </thead>

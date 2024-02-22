@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -23,6 +24,7 @@ class StudentsController extends Controller
                 $query->where('id', $selectedGroup);
             });
         }
+        $query->orderBy('first_name');
 
         $students = $query->paginate(20);
 
@@ -35,7 +37,8 @@ class StudentsController extends Controller
 
     public function one(Request $request): View
     {
-        $student = Student::find($request->id);
+        $student = Student::findOrFail($request->id);
+
         return view('student', ['student' => $student]);
     }
 
@@ -65,13 +68,14 @@ class StudentsController extends Controller
 
     public function delete(Request $request): RedirectResponse
     {
-        $student = Student::findOrFail($request->id);
+        if (!$student = Student::find($request->id)) {
+            return redirect('students')->with('result', 'Student already deleted.');
+        }
+
         $name = $student->getFullName();
         $student->courses()->detach();
         $student->delete();
 
-        Session::flash('success', "Student $name deleted successfully.");
-
-        return redirect()->route('students');
+        return redirect('students')->with('result', "Student $name deleted successfully.");
     }
 }

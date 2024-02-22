@@ -6,7 +6,6 @@ use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class GroupController extends Controller
@@ -26,7 +25,7 @@ class GroupController extends Controller
     public function one(Request $request): View
     {
         $freeStudents = Student::where('group_id', null)->orderBy('first_name')->get();
-        $group = Group::find($request->id);
+        $group = Group::findOrFail($request->id);
         return view('group', ['group' => $group, 'students' => $freeStudents]);
     }
 
@@ -35,11 +34,13 @@ class GroupController extends Controller
         $request->validate([
             'studentId' => 'required|exists:students,id',
         ]);
+        $student = Student::find($request->studentId);
 
-        $group = Group::findOrFail($request->id);
-        $student = Student::findOrFail($request->studentId);
+        if (!$group = Group::find($request->id)) {
+            return redirect('groups');
+        }
 
-        $student->group_id = $group->id;
+        $student->group()->associate($group);
         $student->save();
 
         return redirect()->route('group', [$group->id]);
@@ -47,8 +48,12 @@ class GroupController extends Controller
 
     public function removeStudent(Request $request): RedirectResponse
     {
-        $student = Student::findOrFail($request->studentId);
-        $student->group_id = null;
+        $request->validate([
+            'studentId' => 'required|exists:students,id',
+        ]);
+
+        $student = Student::find($request->studentId);
+        $student->group()->dissociate();
         $student->save();
 
         return redirect()->route('group', [$request->id]);

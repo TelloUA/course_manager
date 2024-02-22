@@ -17,11 +17,11 @@
 @stop
 
 @section('content')
-    @if(Session::has('success'))
+    @if(Session::has('result'))
         <div class="alert alert-info alert-dismissible col-md-4">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h5><i class="icon fas fa-info"></i>Deleted</h5>
-            {{ Session::get('success') }}
+            <h5><i class="icon fas fa-info"></i>Info</h5>
+            {{ Session::get('result') }}
         </div>
     @endif
     <form action="{{ route('students') }}" method="GET">

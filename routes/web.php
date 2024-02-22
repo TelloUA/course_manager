@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,8 @@ Route::get('/groups', [GroupController::class, 'list'])->name('groups');
 Route::get('/group/{id}', [GroupController::class, 'one'])->name('group');
 Route::post('/group/{id}/add-student', [GroupController::class, 'addStudent'])->name('groupAddStudent');
 Route::delete('/group/{id}/remove-student', [GroupController::class, 'removeStudent'])->name('groupRemoveStudent');
+
+Route::get('/courses', [CourseController::class, 'list'])->name('courses');
+Route::get('/courses/{id}', [CourseController::class, 'one'])->name('course');
+Route::post('/courses/{id}/add-student', [CourseController::class, 'addStudent'])->name('courseAddStudent');
+Route::delete('/courses/{id}/remove-student', [CourseController::class, 'removeStudent'])->name('courseRemoveStudent');

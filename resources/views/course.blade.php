@@ -2,6 +2,7 @@
 
 @section('js')
     <script src="https://kit.fontawesome.com/5b269200c6.js" crossorigin="anonymous"></script>
+
     <script>
         document.getElementById('userPlusIcon').addEventListener('click', function() {
             document.getElementById('addStudentFormContainer').style.display = 'block';
@@ -19,7 +20,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>{{ $group->name }}</h1>
+    <h1>{{ ucfirst($course->name) }}</h1>
 @stop
 
 @section('content')
@@ -36,22 +37,22 @@
             @endif
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ $group->students->count() }}</h3>
-                    <h4>students in group</h4>
+                    <h3>{{ $course->students->count() }}</h3>
+                    <h4>students on course</h4>
                 </div>
                 <div class="icon" id="userPlusIcon">
                     <i class="fas fa-user-plus"></i>
                 </div>
                 <div class="card-footer"  id="addStudentFormContainer" style="display: none;">
-                    <form action="{{ route('groupAddStudent', $group->id) }}" method="post">
+                    <form action="{{ route('courseAddStudent', $course->id) }}" method="post">
                         @csrf
                         <div class="input-group">
-                                <select class="form-control" name="studentId" id="studentId">
-                                    <option></option>
-                                    @foreach($students as $student)
-                                        <option value="{{ $student->id }}">{{ $student->getFullName() }}</option>
-                                    @endforeach
-                                </select>
+                            <select class="form-control" name="studentId" id="studentId">
+                                <option></option>
+                                @foreach($students as $student)
+                                    <option value="{{ $student->id }}">{{ $student->getFullName() }}</option>
+                                @endforeach
+                            </select>
                             <span class="input-group-append">
                             <button type="submit" class="btn btn-success">Add</button>
                             </span>
@@ -75,13 +76,13 @@
 
                 <div class="card-body">
                     <ul class="nav flex-column">
-                        @foreach($group->students()->orderBy('first_name')->get() as $student)
+                        @foreach($course->students()->orderBy('first_name')->get() as $student)
                             <li class="nav-item d-flex align-items-center justify-content-between">
                                 <span class="nav-link">
                                     <a href="{{ route('student', $student->id) }}">{{ $student->getFullName() }}</a>
                                 </span>
                                 <form id="deleteForm_{{ $student->id }}"
-                                      action="{{ route('groupRemoveStudent', $group->id) }}"
+                                      action="{{ route('courseRemoveStudent', $course->id) }}"
                                       method="POST">
                                     @csrf
                                     @method('DELETE')

@@ -330,6 +330,11 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
+            'text' => 'Courses',
+            'url'  => 'courses',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
