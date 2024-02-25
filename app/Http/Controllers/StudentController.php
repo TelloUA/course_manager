@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\Student;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class StudentsController extends Controller
+class StudentController extends Controller
 {
     public function list(Request $request): View
     {

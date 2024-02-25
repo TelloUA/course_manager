@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GroupController;
-use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students', [StudentsController::class, 'list'])->name('students');
-Route::get('/student/{id}', [StudentsController::class, 'one'])->name('student');
-Route::get('/student-add', [StudentsController::class, 'add'])->name('studentAdd');
-Route::post('/student-save', [StudentsController::class, 'save'])->name('studentSave');
-Route::delete('/student/{id}', [StudentsController::class, 'delete'])->name('studentDelete');
+Route::get('/students', [StudentController::class, 'list'])->name('students');
+Route::get('/student/{id}', [StudentController::class, 'one'])->name('student');
+Route::get('/student-add', [StudentController::class, 'add'])->name('studentAdd');
+Route::post('/student-save', [StudentController::class, 'save'])->name('studentSave');
+Route::delete('/student/{id}', [StudentController::class, 'delete'])->name('studentDelete');
 
 Route::get('/groups', [GroupController::class, 'list'])->name('groups');
 Route::get('/group/{id}', [GroupController::class, 'one'])->name('group');
