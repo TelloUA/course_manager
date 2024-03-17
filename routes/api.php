@@ -25,9 +25,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get($version . '/students', [ApiStudentController::class, 'list']);
 Route::get($version . '/students/{id}', [ApiStudentController::class, 'one']);
+Route::post($version . '/students', [ApiStudentController::class, 'add']);
+Route::delete($version . '/students/{id}', [ApiStudentController::class, 'delete']);
+Route::delete($version . '/students/{id}/remove-group', [ApiStudentController::class, 'removeGroup']);
 
 Route::get($version . '/groups', [ApiGroupController::class, 'list']);
 Route::get($version . '/groups/{id}', [ApiGroupController::class, 'one']);
+Route::post($version . '/groups/{id}/add-student', [ApiGroupController::class, 'addStudent']);
 
 Route::get($version . '/courses', [ApiCourseController::class, 'list']);
 Route::get($version . '/courses/{id}', [ApiCourseController::class, 'one']);
+Route::post($version . '/courses/{id}/add-student', [ApiCourseController::class, 'addStudent']);
+Route::post($version . '/courses/{id}/remove-student', [ApiCourseController::class, 'removeStudent']);
