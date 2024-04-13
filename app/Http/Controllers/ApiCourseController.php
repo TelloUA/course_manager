@@ -48,4 +48,26 @@ class ApiCourseController extends Controller
 
         return response()->json([], 204);
     }
+
+    public function removeStudent(Request $request): JsonResponse
+    {
+        if (!$course = Course::find($request->id)) {
+            return response()->json(['errors' => 'No such course'], 422);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'studentId' => 'required|exists:students,id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $student = Student::find($request->input('studentId'));
+
+        $student->courses()->detach($course);
+
+        return response()->json([], 204);
+    }
+
 }

@@ -3,7 +3,7 @@
 namespace Tests\Http\Controllers;
 
 use App\Models\Student;
-use Illuminate\Support\Facades\Artisan;
+use Database\Seeders\TestSeeder;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
@@ -11,8 +11,8 @@ class StudentControllerTest extends TestCase
 {
     public function setUp(): void
     {
+        $this->seeder = TestSeeder::class;
         parent::setUp();
-        Artisan::call('db:seed --class=TestSeeder');
     }
     #[DataProvider('providerStudents')]
     public function testStudentsPages(string $uri, int $assertStatus): void

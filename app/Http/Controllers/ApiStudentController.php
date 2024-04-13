@@ -67,7 +67,7 @@ class ApiStudentController extends Controller
         return response()->json([], 204);
     }
 
-    public function removeGroup(Request $request)
+    public function removeGroup(Request $request): JsonResponse
     {
         $validator = Validator::make(
             ['id' => $request->id],

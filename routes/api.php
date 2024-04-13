@@ -36,4 +36,4 @@ Route::post($version . '/groups/{id}/add-student', [ApiGroupController::class, '
 Route::get($version . '/courses', [ApiCourseController::class, 'list']);
 Route::get($version . '/courses/{id}', [ApiCourseController::class, 'one']);
 Route::post($version . '/courses/{id}/add-student', [ApiCourseController::class, 'addStudent']);
-Route::post($version . '/courses/{id}/remove-student', [ApiCourseController::class, 'removeStudent']);
+Route::delete($version . '/courses/{id}/remove-student', [ApiCourseController::class, 'removeStudent']);
