@@ -15,7 +15,7 @@ class ApiStudentControllerTest extends TestCase
         parent::setUp();
     }
 
-    #[DataProvider('providerStudents')]
+    #[DataProvider('providerStudentsPages')]
     public function testStudentsPages(string $uri, int $assertStatus, array $expectedResult): void
     {
         $response = $this->get($uri);
@@ -24,7 +24,7 @@ class ApiStudentControllerTest extends TestCase
         $this->assertSame($expectedResult, $content['data']);
     }
 
-    public static function providerStudents(): \Generator
+    public static function providerStudentsPages(): \Generator
     {
         $baseRoute = '/api/v1/students';
 
